@@ -26,14 +26,14 @@ var getPlatforms = function (projectName) {
   var deferred = Q.defer();
   var platforms = [];
   var xcodeFolder = '/Images.xcassets/AppIcon.appiconset/';
-  var androidStudioFolder = '/res/';
+  var androidStudioFolder = '/app/src/main/res/';
 
   if (settings.OLD_XCODE_PATH) {
     xcodeFolder = '/Resources/icons/';
   }
 
   if (settings.OLD_ANDROID_STUDIO_PATH) {
-    androidStudioFolder = '/app/src/main/res/';
+    androidStudioFolder = '/res/';
   }
 
   platforms.push({
