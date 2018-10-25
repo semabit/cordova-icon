@@ -48,6 +48,12 @@ For good results, your file should be:
 - for Android and iOS, at least 1024\*1024px
 - for Windows, at least 1240\*1240px
 
+#### Android v6
+
+ To generate icons for cordova-android v6, use the following:
+ 
+     $ cordova-icon --android-old
+
 #### Notes:
 
 - Your `config.ml` file will not be updated by the tool (because images are automatically created in the good folders)
