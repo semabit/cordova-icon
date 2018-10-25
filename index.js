@@ -13,6 +13,7 @@ var argv   = require('minimist')(process.argv.slice(2));
 var settings = {};
 settings.CONFIG_FILE = argv.config || 'config.xml';
 settings.ICON_FILE = argv.icon || 'icon.png';
+settings.OLD_ANDROID_STUDIO_PATH = argv['android-old'] || false;
 settings.OLD_XCODE_PATH = argv['xcode-old'] || false;
 
 /**
@@ -25,9 +26,14 @@ var getPlatforms = function (projectName) {
   var deferred = Q.defer();
   var platforms = [];
   var xcodeFolder = '/Images.xcassets/AppIcon.appiconset/';
+  var androidStudioFolder = '/res/';
 
   if (settings.OLD_XCODE_PATH) {
     xcodeFolder = '/Resources/icons/';
+  }
+
+  if (settings.OLD_ANDROID_STUDIO_PATH) {
+    androidStudioFolder = '/app/src/main/res/';
   }
 
   platforms.push({
@@ -69,7 +75,7 @@ var getPlatforms = function (projectName) {
   platforms.push({
     name : 'android',
     isAdded : fs.existsSync('platforms/android'),
-    iconsPath : 'platforms/android/app/src/main/res/',
+    iconsPath : 'platforms/android/' + androidStudioFolder,
     icons : [
       { name : 'drawable/icon.png',       size : 96 },
       { name : 'drawable-hdpi/icon.png',  size : 72 },
