@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/AlexDisler/cordova-icon.git"
+    "url": "git://github.com/semabit/cordova-icon.git"
   },
   "keywords": [
     "cordova",
@@ -21,10 +21,7 @@
   ],
   "author": "Alex Disler",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/AlexDisler/cordova-icon/issues"
-  },
-  "homepage": "https://github.com/AlexDisler/cordova-icon",
+  "homepage": "https://github.com/semabit/cordova-icon",
   "dependencies": {
     "colors": "^0.6.2",
     "fs-extra": "^0.30.0",
