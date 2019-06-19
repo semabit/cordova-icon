@@ -48,11 +48,15 @@ For good results, your file should be:
 - for Android and iOS, at least 1024\*1024px
 - for Windows, at least 1240\*1240px
 
-#### Android v6
+#### Android 
 
  To generate icons for cordova-android v6, use the following:
  
-     $ cordova-icon --android-old
+     $ cordova-icon --android-v6
+
+ To generate icons for cordova-android v7, use the following:
+ 
+     $ cordova-icon --android-v7
 
 #### Notes:
 
