@@ -382,6 +382,7 @@ var atLeastOnePlatformFound = function () {
  */
 var validIconExists = function () {
   var deferred = Q.defer();
+
   fs.exists(settings.ICON_FILE, function (exists) {
     if (exists) {
       display.success(settings.ICON_FILE + ' exists');
@@ -391,6 +392,27 @@ var validIconExists = function () {
       deferred.reject();
     }
   });
+  if (!settings.ANDROID_V6 && !settings.ANDROID_V7) {
+    fs.exists(settings.ANDROID_ICON_FOREGROUND_FILE, function (exists) {
+      if (exists) {
+        display.success(settings.ANDROID_ICON_FOREGROUND_FILE + ' exists');
+        deferred.resolve();
+      } else {
+        display.error(settings.ANDROID_ICON_FOREGROUND_FILE + ' does not exist');
+        deferred.reject();
+      }
+    });
+    fs.exists(settings.ANDROID_ICON_BACKGROUND_FILE, function (exists) {
+      if (exists) {
+        display.success(settings.ANDROID_ICON_BACKGROUND_FILE + ' exists');
+        deferred.resolve();
+      } else {
+        display.error(settings.ANDROID_ICON_BACKGROUND_FILE + ' does not exist');
+        deferred.reject();
+      }
+    });
+  }
+
   return deferred.promise;
 };
 
