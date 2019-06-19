@@ -13,6 +13,8 @@ var argv   = require('minimist')(process.argv.slice(2));
 var settings = {};
 settings.CONFIG_FILE = argv.config || 'config.xml';
 settings.ICON_FILE = argv.icon || 'icon.png';
+settings.ANDROID_ICON_BACKGROUND_FILE = argv['icon-background'] || 'icon_background.png';
+settings.ANDROID_ICON_FOREGROUND_FILE = argv['icon-foreground'] || 'icon_foreground.png';
 settings.ANDROID_V6 = argv['android-v6'] || false;
 settings.ANDROID_V7 = argv['android-v7'] || false;
 settings.OLD_XCODE_PATH = argv['xcode-old'] || false;
@@ -113,6 +115,20 @@ var getPlatforms = function (projectName) {
         { name : 'mipmap-xhdpi/ic_launcher.png',      size : 96 },
         { name : 'mipmap-xxhdpi/ic_launcher.png',     size : 144 },
         { name : 'mipmap-xxxhdpi/ic_launcher.png',    size : 192 }
+      ],
+      adaptiveIcons : [
+        { name : 'mipmap-hdpi-v26/ic_launcher_background.png',       size : 72, type: 'background' },
+        { name : 'mipmap-hdpi-v26/ic_launcher_foreground.png',       size : 72, type: 'foreground' },
+        { name : 'mipmap-ldpi-v26/ic_launcher_background.png',       size : 36, type: 'background' },
+        { name : 'mipmap-ldpi-v26/ic_launcher_foreground.png',       size : 36, type: 'foreground' },
+        { name : 'mipmap-mdpi-v26/ic_launcher_background.png',       size : 48, type: 'background' },
+        { name : 'mipmap-mdpi-v26/ic_launcher_foreground.png',       size : 48, type: 'foreground' },
+        { name : 'mipmap-xhdpi-v26/ic_launcher_background.png',      size : 216, type: 'background' },
+        { name : 'mipmap-xhdpi-v26/ic_launcher_foreground.png',      size : 216, type: 'foreground' },
+        { name : 'mipmap-xxhdpi-v26/ic_launcher_background.png',     size : 324, type: 'background' },
+        { name : 'mipmap-xxhdpi-v26/ic_launcher_foreground.png',     size : 324, type: 'foreground' },
+        { name : 'mipmap-xxxhdpi-v26/ic_launcher_background.png',    size : 432, type: 'background' },
+        { name : 'mipmap-xxxhdpi-v26/ic_launcher_foreground.png',    size : 432, type: 'foreground' }
       ]
     });
   }
@@ -238,11 +254,11 @@ var getProjectName = function () {
  *
  * @param  {Object} platform
  * @param  {Object} icon
+ * @param  {string} srcPath
  * @return {Promise}
  */
-var generateIcon = function (platform, icon) {
+var generateIcon = function (platform, icon, srcPath = settings.ICON_FILE) {
   var deferred = Q.defer();
-  var srcPath = settings.ICON_FILE;
   var platformPath = srcPath.replace(/\.png$/, '-' + platform.name + '.png');
   if (fs.existsSync(platformPath)) {
     srcPath = platformPath;
@@ -300,6 +316,18 @@ var generateIconsForPlatform = function (platform) {
   icons.forEach(function (icon) {
     all.push(generateIcon(platform, icon));
   });
+
+  if (platform.name === 'android' && platform.adaptiveIcons) {
+    var adaptiveIcons = platform.adaptiveIcons;
+    adaptiveIcons.forEach(function (adaptiveIcon) {
+      if (adaptiveIcon.type === 'background') {
+        all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_BACKGROUND_FILE));
+      } else if (adaptiveIcon.type === 'foreground') {
+        all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_FOREGROUND_FILE));
+      }
+    });
+  }
+
   return Promise.all(all);
 };
 
