@@ -36,7 +36,9 @@ Then run:
 
 You also can specify manually a location for your `config.xml` or `icon.png`:
 
-     $ cordova-icon --config=config.xml --icon=icon.png --icon-background=icon_foreground.png  --icon-foreground=icon_background.png
+     $ cordova-icon --config=config.xml --icon=icon.png --icon-background=icon_background.png  --icon-foreground=icon_foreground.png
+ 
+The parameters `--icon-background` and `--icon-foreground` are requried if `--android-v6` or `--android-v7` are not passed.
 
 If you run a old version of Cordova for iOS / Mac and you need your files in `/Resources/icons/`, use this option:
 
