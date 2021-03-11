@@ -40,6 +40,9 @@
     "release-it": "^14.4.1"
   },
   "release-it": {
+    "hooks": {
+      "after:npm:bump": "yarn build"
+    },
     "git": {
       "commitMessage": "Release v${version}",
       "tagName": "v${version}",
