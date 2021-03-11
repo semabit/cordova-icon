@@ -11,7 +11,8 @@
     "bin": "./bin"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,23 @@
     "q": "^1.0.1",
     "underscore": "^1.6.0",
     "xml2js": "^0.4.3"
+  },
+  "devDependencies": {
+    "release-it": "^14.4.1"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "Release v${version}",
+      "tagName": "v${version}",
+      "tagArgs": "-s"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}",
+      "tokenRef": "GITHUB_TOKEN_CLI_RELEASER"
+    },
+    "npm": {
+      "publish": false
+    }
   }
 }
