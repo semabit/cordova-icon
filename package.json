@@ -12,6 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./bin/build",
     "release": "release-it"
   },
   "repository": {
@@ -50,7 +51,8 @@
       "tokenRef": "GITHUB_TOKEN_CLI_RELEASER"
     },
     "npm": {
-      "publish": true
+      "publish": true,
+      "publishPath": "dist"
     }
   },
   "publishConfig": {

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+PROJECT_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && cd .. && pwd)"
+
+mkdir -p "${PROJECT_ROOT_DIR}/dist/bin"
+
+cp "${PROJECT_ROOT_DIR}/bin/cordova-icon" "${PROJECT_ROOT_DIR}/dist/bin"
+cp "${PROJECT_ROOT_DIR}/index.js" "${PROJECT_ROOT_DIR}/dist"
+cp "${PROJECT_ROOT_DIR}/package.json" "${PROJECT_ROOT_DIR}/dist"
+cp "${PROJECT_ROOT_DIR}/README.md" "${PROJECT_ROOT_DIR}/dist"
