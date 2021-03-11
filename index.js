@@ -114,7 +114,13 @@ var getPlatforms = function (projectName) {
         {name: 'mipmap-mdpi/ic_launcher.png', size: 48},
         {name: 'mipmap-xhdpi/ic_launcher.png', size: 96},
         {name: 'mipmap-xxhdpi/ic_launcher.png', size: 144},
-        {name: 'mipmap-xxxhdpi/ic_launcher.png', size: 192}
+        {name: 'mipmap-xxxhdpi/ic_launcher.png', size: 192},
+        {name: 'mipmap-hdpi/notification_icon.png', size: 72},
+        {name: 'mipmap-ldpi/notification_icon.png', size: 36},
+        {name: 'mipmap-mdpi/notification_icon.png', size: 48},
+        {name: 'mipmap-xhdpi/notification_icon.png', size: 96},
+        {name: 'mipmap-xxhdpi/notification_icon.png', size: 144},
+        {name: 'mipmap-xxxhdpi/notification_icon.png', size: 192}
       ],
       adaptiveIcons: [
         {name: 'mipmap-hdpi-v26/ic_launcher_background.png', size: 72, type: 'background'},
