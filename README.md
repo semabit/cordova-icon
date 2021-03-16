@@ -60,6 +60,10 @@ For good results, your file should be:
 
      $ cordova-icon --android-v7
 
+ To generate notification icons for cordova-android use the following:
+
+     $ cordova-icon --icon-notification=notification.png
+
 #### Notes:
 
 - Your `config.ml` file will not be updated by the tool (because images are automatically created in the good folders)

@@ -15,6 +15,7 @@ settings.CONFIG_FILE = argv.config || 'config.xml';
 settings.ICON_FILE = argv.icon || 'icon.png';
 settings.ANDROID_ICON_BACKGROUND_FILE = argv['icon-background'] || 'icon_background.png';
 settings.ANDROID_ICON_FOREGROUND_FILE = argv['icon-foreground'] || 'icon_foreground.png';
+settings.ANDROID_ICON_NOTIFICATION_FILE = argv['icon-notification'];
 settings.ANDROID_V6 = argv['android-v6'] || false;
 settings.ANDROID_V7 = argv['android-v7'] || false;
 settings.OLD_XCODE_PATH = argv['xcode-old'] || false;
@@ -115,12 +116,6 @@ var getPlatforms = function (projectName) {
         {name: 'mipmap-xhdpi/ic_launcher.png', size: 96},
         {name: 'mipmap-xxhdpi/ic_launcher.png', size: 144},
         {name: 'mipmap-xxxhdpi/ic_launcher.png', size: 192},
-        {name: 'mipmap-hdpi/notification_icon.png', size: 72},
-        {name: 'mipmap-ldpi/notification_icon.png', size: 36},
-        {name: 'mipmap-mdpi/notification_icon.png', size: 48},
-        {name: 'mipmap-xhdpi/notification_icon.png', size: 96},
-        {name: 'mipmap-xxhdpi/notification_icon.png', size: 144},
-        {name: 'mipmap-xxxhdpi/notification_icon.png', size: 192}
       ],
       adaptiveIcons: [
         {name: 'mipmap-hdpi-v26/ic_launcher_background.png', size: 72, type: 'background'},
@@ -135,6 +130,14 @@ var getPlatforms = function (projectName) {
         {name: 'mipmap-xxhdpi-v26/ic_launcher_foreground.png', size: 324, type: 'foreground'},
         {name: 'mipmap-xxxhdpi-v26/ic_launcher_background.png', size: 432, type: 'background'},
         {name: 'mipmap-xxxhdpi-v26/ic_launcher_foreground.png', size: 432, type: 'foreground'}
+      ],
+      notificationIcons: [
+        {name: 'mipmap-hdpi/notification_icon.png', size: 72},
+        {name: 'mipmap-ldpi/notification_icon.png', size: 36},
+        {name: 'mipmap-mdpi/notification_icon.png', size: 48},
+        {name: 'mipmap-xhdpi/notification_icon.png', size: 96},
+        {name: 'mipmap-xxhdpi/notification_icon.png', size: 144},
+        {name: 'mipmap-xxxhdpi/notification_icon.png', size: 192}
       ]
     });
   }
@@ -323,15 +326,23 @@ var generateIconsForPlatform = function (platform) {
     all.push(generateIcon(platform, icon));
   });
 
-  if (platform.name === 'android' && platform.adaptiveIcons) {
-    var adaptiveIcons = platform.adaptiveIcons;
-    adaptiveIcons.forEach(function (adaptiveIcon) {
-      if (adaptiveIcon.type === 'background') {
-        all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_BACKGROUND_FILE));
-      } else if (adaptiveIcon.type === 'foreground') {
-        all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_FOREGROUND_FILE));
-      }
-    });
+  if (platform.name === 'android') {
+    if (platform.adaptiveIcons) {
+      var adaptiveIcons = platform.adaptiveIcons;
+      adaptiveIcons.forEach(function (adaptiveIcon) {
+        if (adaptiveIcon.type === 'background') {
+          all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_BACKGROUND_FILE));
+        } else if (adaptiveIcon.type === 'foreground') {
+          all.push(generateIcon(platform, adaptiveIcon, settings.ANDROID_ICON_FOREGROUND_FILE));
+        }
+      });
+    }
+    if (platform.notificationIcons) {
+      var notificationIcons = platform.notificationIcons;
+      notificationIcons.forEach(function (notificationIcon) {
+        all.push(generateIcon(platform, notificationIcon, settings.ANDROID_ICON_NOTIFICATION_FILE));
+      });
+    }
   }
 
   return Promise.all(all);
@@ -418,6 +429,15 @@ var validIconExists = function () {
       }
     });
   }
+  fs.exists(settings.ANDROID_ICON_NOTIFICATION_FILE, function (exists) {
+    if (exists) {
+      display.success(settings.ANDROID_ICON_NOTIFICATION_FILE + ' exists');
+      deferred.resolve();
+    } else {
+      display.error(settings.ANDROID_ICON_NOTIFICATION_FILE + ' does not exist');
+      deferred.reject();
+    }
+  });
 
   return deferred.promise;
 };
