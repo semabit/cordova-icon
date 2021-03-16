@@ -1,6 +1,6 @@
 {
   "name": "@semabit/cordova-icon",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Automatic icon resizing for Cordova",
   "main": "index.js",
   "preferGlobal": true,
