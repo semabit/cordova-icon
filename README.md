@@ -62,7 +62,9 @@ For good results, your file should be:
 
  To generate notification icons for cordova-android use the following:
 
-     $ cordova-icon --icon-notification=notification.png
+     $ cordova-icon --icon-notification=notification.png --icon-notification-name=ic_notification
+ By default, the file name is `ic_notification`. You can change the name through providing a different name
+ with the parameter `--icon-notification-name`.
 
 #### Notes:
 

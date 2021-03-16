@@ -16,6 +16,7 @@ settings.ICON_FILE = argv.icon || 'icon.png';
 settings.ANDROID_ICON_BACKGROUND_FILE = argv['icon-background'] || 'icon_background.png';
 settings.ANDROID_ICON_FOREGROUND_FILE = argv['icon-foreground'] || 'icon_foreground.png';
 settings.ANDROID_ICON_NOTIFICATION_FILE = argv['icon-notification'];
+settings.ANDROID_ICON_NOTIFICATION_NAME = argv['icon-notification-name'] || 'ic_notification';
 settings.ANDROID_V6 = argv['android-v6'] || false;
 settings.ANDROID_V7 = argv['android-v7'] || false;
 settings.OLD_XCODE_PATH = argv['xcode-old'] || false;
@@ -132,12 +133,12 @@ var getPlatforms = function (projectName) {
         {name: 'mipmap-xxxhdpi-v26/ic_launcher_foreground.png', size: 432, type: 'foreground'}
       ],
       notificationIcons: [
-        {name: 'mipmap-hdpi/notification_icon.png', size: 72},
-        {name: 'mipmap-ldpi/notification_icon.png', size: 36},
-        {name: 'mipmap-mdpi/notification_icon.png', size: 48},
-        {name: 'mipmap-xhdpi/notification_icon.png', size: 96},
-        {name: 'mipmap-xxhdpi/notification_icon.png', size: 144},
-        {name: 'mipmap-xxxhdpi/notification_icon.png', size: 192}
+        {name: `mipmap-hdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 72},
+        {name: `mipmap-ldpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 36},
+        {name: `mipmap-mdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 48},
+        {name: `mipmap-xhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 96},
+        {name: `mipmap-xxhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 144},
+        {name: `mipmap-xxxhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 192}
       ]
     });
   }
