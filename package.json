@@ -4,9 +4,7 @@
   "description": "Automatic icon resizing for Cordova",
   "main": "index.js",
   "preferGlobal": true,
-  "bin": {
-    "cordova-icon": "bin/cordova-icon"
-  },
+  "bin": "bin/cordova-icon",
   "directories": {
     "bin": "./bin"
   },
@@ -62,5 +60,6 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
