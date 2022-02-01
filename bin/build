@@ -2,6 +2,9 @@
 
 PROJECT_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && cd .. && pwd)"
 
+# clean up
+rm -rf "${PROJECT_ROOT_DIR}/dist"
+
 mkdir -p "${PROJECT_ROOT_DIR}/dist/bin"
 
 cp "${PROJECT_ROOT_DIR}/bin/cordova-icon" "${PROJECT_ROOT_DIR}/dist/bin"
