@@ -96,6 +96,14 @@ var getPlatforms = function (projectName) {
         {name: 'mipmap-xhdpi/icon.png', size: 96},
         {name: 'mipmap-xxhdpi/icon.png', size: 144},
         {name: 'mipmap-xxxhdpi/icon.png', size: 192}
+      ],
+      notificationIcons: [
+        {name: `mipmap-hdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 72},
+        {name: `mipmap-ldpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 36},
+        {name: `mipmap-mdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 48},
+        {name: `mipmap-xhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 96},
+        {name: `mipmap-xxhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 144},
+        {name: `mipmap-xxxhdpi/${settings.ANDROID_ICON_NOTIFICATION_NAME}.png`, size: 192}
       ]
     });
   } else {
