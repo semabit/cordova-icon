@@ -397,7 +397,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@semabit/cordova-icon@workspace:."
   dependencies:
-    colors: "npm:^0.6.2"
+    colors: "npm:^1.4.0"
     fs-extra: "npm:^11.3.4"
     imagemagick: "npm:^0.1.3"
     minimist: "npm:^1.2.0"
@@ -605,10 +605,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colors@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "colors@npm:0.6.2"
-  checksum: 10/dbe7dc8d8fe0c1a5f0c3351ecc9bbbeff18cc8b7317151595b6f798cf23a68ed2eac90faced38d96cea925e45a62a7620fdda6bce7ac116f8f2e6e87ec5fe256
+"colors@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "colors@npm:1.4.0"
+  checksum: 10/90b2d5465159813a3983ea72ca8cff75f784824ad70f2cc2b32c233e95bcfbcda101ebc6d6766bc50f57263792629bfb4f1f8a4dfbd1d240f229fc7f69b785fc
   languageName: node
   linkType: hard
 
