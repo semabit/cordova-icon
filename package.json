@@ -37,6 +37,9 @@
   "devDependencies": {
     "release-it": "^19.2.4"
   },
+  "resolutions": {
+    "undici": "^6.28.0"
+  },
   "release-it": {
     "hooks": {
       "after:npm:bump": "yarn build"
